@@ -5,12 +5,14 @@ require('./util');
 var filmSchema = new Schema({
     _id:{type: Number},
     film_name:{type: String},
-    release_date:{type: String},
-    average_review:{type: String},
-    rating:{type: Double},
-    genres:[{type: Number}],
-    starring:[{Type: Number}],
-    directors:[{Type: Number}]
+    description:{type: String},
+    image: {type: String},
+    release_date:{type: Number},
+    average_review:{type: Number},
+    rating:{type: String},
+    genres:[{type: String}],
+    starring:[{type: String}],
+    directors:[{type: String}]
 });
 
 module.exports = mongoose.model('Film', filmSchema);
