@@ -95,6 +95,18 @@ router.get('/getFilmbyRating', function(req, res, next){
   }
 });
 
+
+///Retrieving stuff by tags
+router.get('/getFilmByTags', function(req, res, next){
+  var tag = req.query.tag;
+  
+  Film.find({tags: tag}, function(err, films){
+    if (err)
+      res.send(err);
+    res.json(films);
+  });
+});
+
 //temp thing: delete value from genres
 router.delete('/deleteGenre', function(req, res, next){
   Genre.deleteOne({}, function(err)

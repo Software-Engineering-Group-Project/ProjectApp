@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+mongoose.set('useCreateIndex', true);
 require('./util');
 
 var filmSchema = new Schema({
-    _id:{type: Number},
+    id:{type: Number,
+        unique: true},
     film_name:{type: String},
     description:{type: String},
     image: {type: String},
@@ -12,7 +14,8 @@ var filmSchema = new Schema({
     rating:{type: String},
     genres:[{type: String}],
     starring:[{type: String}],
-    directors:[{type: String}]
+    directors:[{type: String}],
+    tags:[{type: String}]
 });
 
 module.exports = mongoose.model('Film', filmSchema);
