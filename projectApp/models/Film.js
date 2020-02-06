@@ -15,7 +15,8 @@ var filmSchema = new Schema({
     genres:[{type: String}],
     starring:[{type: String}],
     directors:[{type: String}],
-    tags:[{type: String}]
+    tags:[{type: String}],
+    cost:{type: Number}
 });
 
 module.exports = mongoose.model('Film', filmSchema);
