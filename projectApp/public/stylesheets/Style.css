@@ -1,0 +1,300 @@
+html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+body {
+    background: rgb(255, 255, 255);
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+
+.btn {
+    background: #333;
+    color: #fff;
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+    padding: 15px;
+}
+
+
+/*----------------- Navbar -----------------*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    position: sticky;
+    background-color: #333;
+}
+
+
+/*----------------- LeftSide Navbar -----------------*/
+
+.left-side {
+    display: flex;
+}
+
+.navbar>.left-side>div {
+    margin-right: 15px;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.navbar-link {
+    height: 20px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+.navbar-link a {
+    color: #ffffff;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.navbar-link:hover {
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar-link a:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+
+
+/*----------------- Account Navbar -----------------*/
+
+.navbar-account {
+    height: 20px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+.navbar-account a {
+    color: #ffffff;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.navbar-account:hover {
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar-account a:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+
+
+/*----------------- Searchbar -----------------*/
+
+.search input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    float: left;
+}
+
+.search button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search button:hover {
+    background: #ccc;
+}
+
+
+/*----------------- Modals -----------------*/
+
+.input-field .btn {
+    width: 100%;
+}
+
+
+/*----------------- Top Container -----------------*/
+
+.top-container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: 'showcase showcase top-box-a' 'showcase showcase top-box-b';
+}
+
+
+/*----------------- Showcase -----------------*/
+
+.carousel {
+    max-width: 100vh;
+    height: 200px;
+}
+
+.myslides img {
+    width: 500px;
+    max-width: 500px;
+    height: 200px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.showcase {
+    grid-area: showcase;
+    max-height: 120vh;
+    max-width: 120vh;
+    background: #ddd;
+    color: #333;
+    background-size: cover;
+    background-position: center;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+.showcase h1 {
+    font-size: 64px;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.showcase p {
+    font-size: 20px;
+    margin-top: 0;
+    color: #fff;
+}
+
+.featured-search-btn,
+.random-search-btn {
+    transition-duration: 0.4s;
+    background-color: #ddd;
+    color: black;
+    border: 2px solid black;
+    padding: 15px 35px;
+    min-width: 20%;
+}
+
+.featured-search-btn:hover,
+.random-search-btn:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+input::-webkit-input-placeholder {
+    color: black;
+}
+
+
+/*----------------- Top Box -----------------*/
+
+.top-box {
+    background: #ddd;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    padding: 24px;
+}
+
+.top-box-a {
+    grid-area: top-box-a;
+    text-align: center;
+}
+
+.top-box-b {
+    grid-area: top-box-b;
+    text-align: center;
+}
+
+
+/*----------------- Boxes -----------------*/
+
+.boxes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.genre-box,
+.newrel-box,
+.popular-box,
+.toprated-box {
+    background: #ddd;
+    text-align: center;
+    padding: 24px 32px;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+.icons {
+    width: 100px;
+    height: 100px;
+}
+
+
+/* Stop blue and underline text on hyperlink boxes */
+
+
+/* unvisited link */
+
+.boxes a:link,
+.search-box a:link {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* visited link */
+
+.boxes a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* mouse over link */
+
+.boxes a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* selected link */
+
+.boxes a:active {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*----------------- Footer -----------------*/
+
+footer {
+    margin-top: 32px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}
