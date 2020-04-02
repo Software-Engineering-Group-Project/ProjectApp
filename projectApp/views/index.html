@@ -1,250 +1,279 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="stylesheets/Style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
-	<title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/Style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Home</title>
     <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
 
-  </head>
-	<body>
-		<div class="container">
+    <div class="navbar">
 
-			<div class="navbar">
+        <div class="left-side">
+            <div class="navbar-link" id="home-button">
+                <a href="#" onclick="renderHome();">Home</a>
+            </div>
 
-				<div class="left-side">
-					<div class="navbar-link" id="home-button">
-						<a href="#" onclick="renderHome();">Home</a>
-					</div>
+            <div class="navbar-account signed-out" id="sign-in-button">
+                <a href="#modal-login" class="modal-trigger">Sign In</a>
+            </div>
 
-					<div class="navbar-account signed-out" id="sign-in-button">
-						<a href="#modal-login" class="modal-trigger">Sign In</a>
-					</div>
+            <div class="navbar-account signed-out" id="sign-up-button">
+                <a href="#modal-signup" class="modal-trigger">Sign Up</a>
+            </div>
+            <div class="navbar-account signed-in" id="sign-out-button">
+                <a>Sign Out</a>
+            </div>
 
-					<div class="navbar-account signed-out" id="sign-up-button">
-						<a href="#modal-signup" class="modal-trigger">Sign Up</a>
-					</div>
-					<div class="navbar-account signed-in" id="sign-out-button">
-						<a>Sign Out</a>
-					</div>
+        </div>
 
-				</div>
+    </div>
 
-				<div class="right-side">
+    <body>
+        <div class="wrapper">
+            <!-- Top Container -->
+            <section class="top-container">
+                <header class="showcase">
+                    <div id="carousel" class="carousel slide" data-ride="carousel">
+                        <img class="mySlides" src="https://live.staticflickr.com/4005/4686746190_31c292dc8c_b.jpg" alt="First slide">
 
-					<div class="search">
-							<input type="search" id="searchBar" placeholder="Search">
-					</div>
+                        <img class="mySlides" src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-batman.jpg" alt="Second slide">
 
-				</div>
+                        <img class="mySlides" src="https://cdn.collider.com/wp-content/uploads/2011/12/the-avengers-movie-poster-banners-03.jpg" alt="Third slide">
 
-			</div>
+                        <img class="mySlides" src="https://alishahussain27.files.wordpress.com/2014/11/the-hobbit-the-desolation-of-smaug-2013-movie-banner-poster.jpg" alt="Fourth slide">
 
-			<div class="content">
-				<div class="options" id="home-options">
+                        <img class="mySlides" src="https://i.ytimg.com/vi/2IU014279Uo/maxresdefault.jpg" alt="Fifth slide">
 
-					<div class="option">
-						<div class="img-background">
-							<img src="images/choose-for-me.jpg">
-						</div>
-						<div class="img-text">
-							<div class="logo">
-								<img src="images/choose-for-me-logo.png">
-							</div>
-							<div class="text">
-								You dont know what to watch? Let us choose for you. We will select a random movie for you to watch. If you don't like it, try again.
-							</div>
-						</div>
-					</div>
+                    </div>
+                    <script>
+                        var slideIndex = 0;
+                        carousel();
 
-					<div class="option">
-						<div class="img-background">
-							<img src="images/featured.jpg">
-						</div>
-						<div class="img-text">
-							<div class="logo">
-								<img src="images/featured-logo.png">
-							</div>
-							<div class="text">
-								Get a list of our featured movies.This list of movies has a wide range of genres and ratings picked for you.
-							</div>
-						</div>
-					</div>
+                        function carousel() {
+                            var i;
+                            var x = document.getElementsByClassName("mySlides");
+                            for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "none";
+                            }
+                            slideIndex++;
+                            if (slideIndex > x.length) {
+                                slideIndex = 1
+                            }
+                            x[slideIndex - 1].style.display = "block";
+                            setTimeout(carousel, 4000); // Change image every 4 seconds
+                        }
+                    </script>
 
-					<div class="option">
-						<div class="img-background">
-							<img src="images/genre.jpg">
-						</div>
-						<div class="img-text">
-							<div class="logo">
-								<img src="images/genre-logo.png">
-							</div>
-							<div class="text">
-								We have a wide range of genres to choose from. We cover every genre you could want. If you want to narrow your search, this is the place to be.
-							</div>
-						</div>
-					</div>
+                    <h1 style="color: black;">Featured Movies</h1>
+                    <p style="color: black;">Get a list of our featured movies. This list of movies has a wide range of genres and ratings picked for you.
+                    </p>
+                    <a href="#" class="featured-search-btn">View Featured Movies</a>
+                </header>
 
-					<div class="option">
-						<div class="img-background">
-							<img src="images/new-movies.jpg">
-						</div>
-						<div class="img-text">
-							<div class="logo">
-								<img src="images/new-movies-logo.png">
-							</div>
-							<div class="text">
-								We are always updating our list of movies. Find new movies every week. If you are looking for something new this is where to be. 
-							</div>
-						</div>
-					</div>
+                <div class="top-box top-box-a">
 
-					<div class="option">
-						<div class="img-background" >
-							<img src="images/popular.jpg">
-						</div>
-						<div class="img-text">
-							<div class="logo">
-								<img src="images/popular-logo.png">
-							</div>
-							<div class="text">
-								We see which movies are watched more than others and we put them into a list. Find a list of the most watched and popular movies right here.
-							</div>
-						</div>
-					</div>
+                    <div class="search-box">
+                        <img class="icons" src="images/search-icon2.png">
+                        <h5>Search Movies</h5>
+                        <p style="padding:10px">We see which movies are watched more than others and we put them into a list. Find a list of the most watched and popular movies right here.</p>
 
-					<div class="option">
-						<div class="img-background">
-							<img src="images/top-rated.jpg">
-						</div>
-						<div class="img-text">
-							<div class="logo">
-								<img src="images/top-rated-logo.png">
-							</div>
-							<div class="text">
-								We get ratings from several different sources and list our movies according to their rating. If you are looking for the best rated movies, this is the place for you.
-							</div>
-						</div>
-					</div>
+                        <div class="search">
+                            <input type="search" id="searchBar" placeholder="Search..">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
 
-				</div>
-			</div>
+                    </div>
+                </div>
 
-				<!-- Signing up table-->
-			<div class="modal" id="modal-signup">
-				<div class="modal-content">
-					<h4>Sign Up</h4>
-					<form id="signup-form">
-						<div class="input-field">
-							<input type="email" id="signup-email" required/>
-							<label for="signup-email">Email address</label>
-						</div>
-						<div class="input-field">
-							<input type="password" id="signup-password" required/>
-							<label for="signup-password">Choose password</label>
-							<button class="btn yellow darken-2 z-depth-0">Sign up</button>
-							<p class="error red-text center-align"></p>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!-- Logging in table-->
-			<div class="modal" id="modal-login">
-				<div class="modal-content">
-					<h4>Sign In</h4>
-					<form id="login-form">
-						<div class="input-field">
-							<input type="email" id="login-email" required/>
-							<label for="login-email">Email address</label>
-						</div>
-						<div class="input-field">
-							<input type="password" id="login-password" required/>
-							<label for="login-password">Password</label>
-							<button class="btn yellow darken-2 z-depth-0">Sign In</button>
-							<p class="error red-text center-align"></p>
-						</div>
-					</form>
-				</div>
-			</div>
+                <div class="top-box top-box-b">
 
-			<!--Search results table location-->
-			<div class="options" id="the-results">
-				<table class="content" id="results-table" style="display:none">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Release year</th>
-							<th>Rating</th>
-						</tr>
-					</thead>
-					<tbody id="output">
+                    <div class="random-box">
+                        <img class="icons" src="images/choose-for-me-logo 2.png">
+                        <h5>Random Movie</h5>
+                        <p style="padding:10px">You dont know what to watch? Let us choose for you. We will select a random movie for you to watch. If you don't like it, try again.</p>
+                        <a href="#" onClick="randomFilm();" class="random-search-btn">Find Random Movie</a>
+                    </div>
+                    </a>
+                </div>
 
-					</tbody>
-				</table>
-				<h4 id="nothing-found" style="display:none">Error! No films found.<br></h4>
-			</div>
+            </section>
 
-		</div>
+
+            <!-- Boxes Section -->
+            <section class="boxes">
+                <a href="#popular-movies">
+                    <div class="popular-box">
+                        <img class="icons" src="images/popular-logo 2.png">
+                        <h5>Popular Movies</h5>
+                        <p>We see which movies are watched more than others and we put them into a list. Find a list of the most watched and popular movies right here.</p>
+                    </div>
+                </a>
+
+                <a href="#movie-genres">
+                    <div class="genre-box">
+                        <img class="icons" src="images/genre-logo 2.png">
+                        <h5>Movie Genres</h5>
+                        <p>We have a wide range of genres to choose from. We cover every genre you could want. If you want to narrow your search, this is the place to be.</p>
+                    </div>
+                </a>
+
+                <a href="#new-releases">
+                    <div class="newrel-box">
+                        <img class="icons" src="images/new-movies-logo 2.png">
+                        <h5>New Releases</h5>
+                        <p>We are always updating our list of movies. Find new movies every week. If you are looking for something new this is where to be.</p>
+                    </div>
+                </a>
+
+                <a href="#popular-movies">
+                    <div class="popular-box">
+                        <img class="icons" src="images/popular-logo 2.png">
+                        <h5>Popular Movies</h5>
+                        <p>We see which movies are watched more than others and we put them into a list. Find a list of the most watched and popular movies right here.</p>
+                    </div>
+                </a>
+
+                <a href="#top-rated">
+                    <div class="toprated-box">
+                        <img class="icons" src="images/top-rated-logo 2.png">
+                        <h5>Top Rated</h5>
+                        <p>We get ratings from several different sources and list our movies according to their rating. If you are looking for the best rated movies, this is the place for you.</p>
+                    </div>
+                </a>
+
+            </section>
+            </section>
+
+        </div>
+        <!-- Wrapper Ends -->
+
+    </body>
+
+    <!-- Footer -->
+
+    <footer>
+        <p>SE Group Project &copy; 2020</p>
+    </footer>
+
+    <!-- Signing up table-->
+    <div class="modal" id="modal-signup">
+        <div class="modal-content">
+            <h4>Sign Up</h4>
+            <form id="signup-form">
+                <div class="input-field">
+                    <input type="email" id="signup-email" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" required />
+                    <label for="signup-password">Choose password</label>
+                    <button class="btn green darken-2 z-depth-0">Sign up</button>
+                    <p class="error red-text center-align"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Logging in table-->
+    <div class="modal" id="modal-login">
+        <div class="modal-content">
+            <h4>Sign In</h4>
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Password</label>
+                    <button class="btn green darken-2 z-depth-0">Sign In</button>
+                    <p class="error red-text center-align"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Search results table location-->
+    <div class="options" id="the-results">
+        <table class="content" id="results-table" style="display:none">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Release year</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody id="output">
+
+            </tbody>
+        </table>
+        <h4 id="nothing-found" style="display:none">Error! No films found.<br></h4>
+    </div>
+
+    </div>
     </div>
 
     <script>
         // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyAdM6cetnsQYWOMzLAa3WNFhlSFlYo2cZQ",
-        authDomain: "groupproject-db8eb.firebaseapp.com",
-        databaseURL: "https://groupproject-db8eb.firebaseio.com",
-        projectId: "groupproject-db8eb",
-        storageBucket: "groupproject-db8eb.appspot.com",
-        messagingSenderId: "941204985587",
-        appId: "1:941204985587:web:5781dc7911a21675c90986"
-    };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const app = firebase.app();
-  const db = firebase.firestore();
-  const auth = firebase.auth();
-</script>
-	</body>
-	<script src="app.js"></script>
-	<script src="scripts/auth.js"></script>
-	<script src="scripts/index.js"></script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAdM6cetnsQYWOMzLAa3WNFhlSFlYo2cZQ",
+            authDomain: "groupproject-db8eb.firebaseapp.com",
+            databaseURL: "https://groupproject-db8eb.firebaseio.com",
+            projectId: "groupproject-db8eb",
+            storageBucket: "groupproject-db8eb.appspot.com",
+            messagingSenderId: "941204985587",
+            appId: "1:941204985587:web:5781dc7911a21675c90986"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const app = firebase.app();
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+    </script>
+
+
+    <script src="app.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
     <script>
-        const optionBackground = document.querySelectorAll('.option') 
-    
+        const optionBackground = document.querySelectorAll('.option')
+
         optionBackground.forEach(optionBack => {
-          optionBack.addEventListener('mouseover', () => {
-            optionBack.childNodes[1].classList.add('img-blackout');
-          })
-    
-          optionBack.addEventListener('mouseout', () => {
-            optionBack.childNodes[1].classList.remove('img-blackout');
-          })
-    
-		})
-		
-		// for getting input from searchbar
+            optionBack.addEventListener('mouseover', () => {
+                optionBack.childNodes[1].classList.add('img-blackout');
+            })
+
+            optionBack.addEventListener('mouseout', () => {
+                optionBack.childNodes[1].classList.remove('img-blackout');
+            })
+
+        })
+
+        // for getting input from searchbar
 
         var node = document.getElementById("searchBar");
 
-        node.addEventListener("keyup", function(event){
-          if (event.key === "Enter"){
-            genericSearch(node.value);
-          }
-		});
+        node.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                genericSearch(node.value);
+            }
+        });
 
-		//displaying modals
-		
-		$(document).ready(function(){
-			$('.modal').modal();
-		});
+        //displaying modals
+
+        $(document).ready(function() {
+            $('.modal').modal();
+        });
     </script>
+
 </html>
